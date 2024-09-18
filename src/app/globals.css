@@ -1,42 +1,74 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  src: url('/fonts/Pretendard-Regular.otf');
+  font-family: 'Pretendard';
+}
+
+@font-face {
+  src: url('/fonts/Pretendard-Bold.otf');
+  font-family: 'Pretendard-B';
+}
+
+@font-face {
+  src: url('/fonts/Pretendard-ExtraBold.otf');
+  font-family: 'Pretendard-EB';
+}
+
+@font-face {
+  src: url('/fonts/Pretendard-Medium.otf');
+  font-family: 'Pretendard-M';
+}
+
+@font-face {
+  src: url('/fonts/Pretendard-Light.otf');
+  font-family: 'Pretendard-R';
+}
+
+@font-face {
+  src: url('/fonts/Pretendard-ExtraLight.otf');
+  font-family: 'Pretendard-L';
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('/fonts/NotoSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Noto Sans-B';
+  src: url('/fonts/NotoSans-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Noto Sans-M';
+  src: url('/fonts/NotoSans-Medium.ttf');
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground-rgb: #f0f0fa;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
   }
 }
 
-html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  color: rgb(var(--foreground-rgb));
+  background: #f0f0fa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body::-webkit-scrollbar {
+  display: none;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }
