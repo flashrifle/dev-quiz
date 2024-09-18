@@ -26,14 +26,6 @@
     gap: 10px;
 }
 
-.lang-form {
-}
-
-/* IE */
-select::-ms-expand {
-    display: none;
-}
-
 select {
     padding: 5px;
     width: 100%;
