@@ -3,20 +3,30 @@ import './main.css';
 import Icon from '../../../public/icons/icon';
 import { useState } from 'react';
 import { DifficultyData, LanguageData } from '@/components/main/mainData';
+import axios from 'axios';
 
 export default function Main() {
   const [lang, setLang] = useState<string>('');
   const [difficulty, setDifficulty] = useState<string>('');
   const [count, setCount] = useState<number>();
+  const [responseData, setResponseData] = useState<string>(''); // 응답 데이터를 저장할 상태
 
   const allowedLangs = LanguageData;
   const allowedDifficulties = DifficultyData;
 
-  const handleClickBtn = () => {
+  const handleClickBtn = async () => {
     if (!lang || !difficulty || !count) {
       alert('선택하지 않은 항목이 있습니다.');
+      return;
     }
-    console.log(lang, difficulty, count);
+    await axios
+      .post('http://localhost:3001/api/examCreate', {
+        lang: lang,
+        difficulty: difficulty,
+        count: count,
+      })
+      .then((res) => setResponseData(res.data))
+      .catch((err) => console.error(err));
   };
 
   return (
@@ -50,6 +60,13 @@ export default function Main() {
           onChange={(e) => setCount(parseInt(e.target.value))}
         />
         <button onClick={handleClickBtn}>생성하기</button>
+
+        {responseData && (
+          <div className="response-container">
+            <p>응답 결과:</p>
+            <pre>{JSON.stringify(responseData, null, 2)}</pre>{' '}
+          </div>
+        )}
       </div>
     </div>
   );
