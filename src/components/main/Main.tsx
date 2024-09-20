@@ -4,12 +4,14 @@ import Icon from '../../../public/icons/icon';
 import { useState } from 'react';
 import { DifficultyData, LanguageData } from '@/components/main/mainData';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 export default function Main() {
   const [lang, setLang] = useState<string>('');
   const [difficulty, setDifficulty] = useState<string>('');
   const [count, setCount] = useState<number>();
   const [responseData, setResponseData] = useState<string>(''); // 응답 데이터를 저장할 상태
+  const router = useRouter();
 
   const allowedLangs = LanguageData;
   const allowedDifficulties = DifficultyData;
@@ -25,7 +27,12 @@ export default function Main() {
         difficulty: difficulty,
         count: count,
       })
-      .then((res) => setResponseData(res.data))
+      .then((res) => {
+        setResponseData(res.data);
+        console.log(res.data);
+        localStorage.setItem('exam', JSON.stringify(res.data));
+        router.push('/api/examCreate');
+      })
       .catch((err) => console.error(err));
   };
 
@@ -60,14 +67,14 @@ export default function Main() {
           onChange={(e) => setCount(parseInt(e.target.value))}
         />
         <button onClick={handleClickBtn}>생성하기</button>
-
-        {responseData && (
-          <div className="response-container">
-            <p>응답 결과:</p>
-            <pre>{JSON.stringify(responseData, null, 2)}</pre>{' '}
-          </div>
-        )}
       </div>
+      {/*<hr style={{ width: 1920 }} />*/}
+      {/*{responseData && (*/}
+      {/*  <div className="response-container">*/}
+      {/*    <p>응답 결과:</p>*/}
+      {/*    <pre>{JSON.stringify(responseData, null, 2)}</pre>*/}
+      {/*  </div>*/}
+      {/*)}*/}
     </div>
   );
 }
