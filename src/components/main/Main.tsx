@@ -5,12 +5,14 @@ import { useState } from 'react';
 import { DifficultyData, LanguageData } from '@/components/main/mainData';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import { useRecoilState } from 'recoil';
+import { examDataStore } from '../../../recoil/store';
 
 export default function Main() {
   const [lang, setLang] = useState<string>('');
   const [difficulty, setDifficulty] = useState<string>('');
   const [count, setCount] = useState<number>();
-  const [responseData, setResponseData] = useState<string>(''); // 응답 데이터를 저장할 상태
+  const [responseData, setResponseData] = useRecoilState(examDataStore); // 응답 데이터를 저장할 상태
   const router = useRouter();
 
   const allowedLangs = LanguageData;
@@ -30,7 +32,6 @@ export default function Main() {
       .then((res) => {
         setResponseData(res.data);
         console.log(res.data);
-        localStorage.setItem('exam', JSON.stringify(res.data));
         router.push('/api/examCreate');
       })
       .catch((err) => console.error(err));
