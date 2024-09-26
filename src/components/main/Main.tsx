@@ -26,7 +26,7 @@ export default function Main() {
       return;
     }
     await axios
-      .post(`${host}/api/examCreate`, {
+      .post(`/api/examCreate`, {
         lang: lang,
         difficulty: difficulty,
         count: count,
