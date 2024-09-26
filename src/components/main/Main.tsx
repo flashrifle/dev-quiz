@@ -18,13 +18,15 @@ export default function Main() {
   const allowedLangs = LanguageData;
   const allowedDifficulties = DifficultyData;
 
+  const host = process.env['PRODUCT_HOST'];
+
   const handleClickBtn = async () => {
     if (!lang || !difficulty || !count) {
       alert('선택하지 않은 항목이 있습니다.');
       return;
     }
     await axios
-      .post('http://localhost:3001/api/examCreate', {
+      .post(`${host}/api/examCreate`, {
         lang: lang,
         difficulty: difficulty,
         count: count,
