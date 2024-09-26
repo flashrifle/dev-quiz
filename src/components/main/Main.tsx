@@ -18,7 +18,7 @@ export default function Main() {
   const allowedLangs = LanguageData;
   const allowedDifficulties = DifficultyData;
 
-  const host = process.env['PRODUCT_HOST'];
+  const host = process.env['NEXT_PUBLIC_END_POINT'];
 
   const handleClickBtn = async () => {
     if (!lang || !difficulty || !count) {
