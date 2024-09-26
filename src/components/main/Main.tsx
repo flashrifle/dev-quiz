@@ -26,7 +26,7 @@ export default function Main() {
       return;
     }
     await axios
-      .post(`http://43.203.250.182:3001/api/examCreate`, {
+      .post(`https://devquiz.p-e.kr:3001/api/examCreate`, {
         lang: lang,
         difficulty: difficulty,
         count: count,
