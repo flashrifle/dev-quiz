@@ -4,8 +4,8 @@ export default function Icon() {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       version="1.1"
-      width="145.06405639648438"
-      height="128.25718688964844"
+      width="10vw"
+      height="8.9067vw"
       viewBox="0 0 145.06405639648438 128.25718688964844"
     >
       <g>

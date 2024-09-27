@@ -1,0 +1,49 @@
+@media screen and (max-width: 760px) {
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        flex: 1;
+    }
+
+    .title-container {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .main-title {
+        width: 100%;
+
+        font-family: 'Noto Sans';
+        font-size: 7vw;
+        color: #47A289;
+    }
+
+    .main-form-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    select {
+        padding: 5px;
+        width: 100%;
+        height: 30px;
+    }
+
+    .loading-wrap {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: black;
+        opacity: 50%;
+
+        width: 100%;
+        height: 100%;
+    }
+}

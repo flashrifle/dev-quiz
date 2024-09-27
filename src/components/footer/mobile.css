@@ -1,0 +1,23 @@
+@media screen and (max-width: 760px) {
+    .footer-container {
+        width: 100%;
+        height: 200px;
+        background-color: #D8D8D8;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer-copy-text {
+        width: 100%;
+
+        display: flex;
+        justify-content: space-around;
+
+        color: white;
+        font-family: 'Noto Sans-M';
+        font-size: 4vw;
+    }
+}
