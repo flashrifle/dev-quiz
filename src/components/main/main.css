@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
 
+    gap: 20px;
     flex: 1;
 }
 
@@ -25,6 +26,41 @@
     display: flex;
 
     gap: 10px;
+}
+
+.main-file-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.file-uploader {
+    align-content: center;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid black;
+    width: 90%;
+    color: #999999;
+
+}
+
+.main-file-container input[type="file"] {
+    /*position: absolute;*/
+    display: none;
+}
+
+.main-file-container label {
+    display: flex;
+    padding: 5px;
+    width: 10%;
+    color: white;
+    background-color: #47A289;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 select {

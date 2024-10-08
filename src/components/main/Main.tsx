@@ -2,7 +2,7 @@
 import './main.css';
 import './mobile.css';
 import Icon from '../../../public/icons/icon';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { DifficultyData, LanguageData } from '@/components/main/mainData';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
@@ -16,7 +16,8 @@ export default function Main() {
   const [count, setCount] = useState<number>();
   const [loading, setLoading] = useState<boolean>(false);
   const [responseData, setResponseData] = useRecoilState(examDataStore); // 응답 데이터를 저장할 상태
-  const [isPc, setIsPc] = useState<boolean>(false);
+  const [isPc, setIsPc] = useState<boolean>(true);
+  const [fileName, setFileName] = useState<string>('파일을 첨부해 주세요');
   const router = useRouter();
 
   const allowedLangs = LanguageData;
@@ -57,6 +58,16 @@ export default function Main() {
         router.push('/api/examCreate');
       })
       .catch((err) => console.error(err));
+  };
+
+  const handleFileInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    console.log(file);
+    if (!file) {
+      setFileName('파일을 첨부해 주세요');
+    } else {
+      setFileName(e.target.value);
+    }
   };
 
   return (
@@ -101,6 +112,11 @@ export default function Main() {
               onChange={(e) => setCount(parseInt(e.target.value))}
             />
             <button onClick={handleClickBtn}>생성하기</button>
+          </div>
+          <div className="main-file-container">
+            <span className="file-uploader">{fileName}</span>
+            <label htmlFor="file">파일찾기</label>
+            <input id="file" type="file" onChange={handleFileInputChange} />
           </div>
         </div>
       ) : (
