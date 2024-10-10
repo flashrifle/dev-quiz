@@ -9,6 +9,7 @@ export const LanguageData = [
   'MySQL',
   'MS-SQL',
   'PostgreSQL',
+  'Power BI',
 ];
 
 export const DifficultyData = ['초급', '중급', '고급'];
